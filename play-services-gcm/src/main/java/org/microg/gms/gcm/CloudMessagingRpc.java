@@ -148,7 +148,7 @@ public class CloudMessagingRpc {
 
     public void sendGcmMessage(Bundle extras) {
         Intent intent = new Intent(ACTION_GCM_SEND);
-        intent.setPackage(GMS_PACKAGE_NAME);
+        intent.setPackage(getGcmPackageName(context));
         intent.putExtras(extras);
         intent.putExtra(EXTRA_APP, getSelfAuthIntent());
         context.sendOrderedBroadcast(intent, PERMISSION_GTALK);

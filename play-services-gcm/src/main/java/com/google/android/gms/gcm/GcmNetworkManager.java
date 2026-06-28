@@ -27,6 +27,8 @@ import android.text.TextUtils;
 
 import java.util.List;
 
+import org.microg.gms.gcm.CloudMessagingRpc;
+
 import static org.microg.gms.common.Constants.GMS_PACKAGE_NAME;
 import static org.microg.gms.gcm.GcmConstants.ACTION_SCHEDULE;
 import static org.microg.gms.gcm.GcmConstants.ACTION_TASK_READY;
@@ -211,9 +213,10 @@ public class GcmNetworkManager {
     }
 
     private Intent createScheduleIntent() {
-        if (!packageExists(GMS_PACKAGE_NAME)) return null;
+        String gcmPackageName = CloudMessagingRpc.getGcmPackageName(context);
+        if (!packageExists(gcmPackageName)) return null;
         Intent scheduleIntent = new Intent(ACTION_SCHEDULE);
-        scheduleIntent.setPackage(GMS_PACKAGE_NAME);
+        scheduleIntent.setPackage(gcmPackageName);
         scheduleIntent.putExtra("app", PendingIntent.getBroadcast(context, 0, new Intent(), 0));
         return scheduleIntent;
     }
