@@ -34,7 +34,7 @@ public class MainSettingsActivity extends AppCompatActivity {
 
     private void showDialogIfNeeded() {
         SharedPreferences prefs = getSharedPreferences(FIRST_RUN_MASTER, MODE_PRIVATE);
-        if (BuildConfig.APPLICATION_ID == Constants.USER_MICROG_PACKAGE_NAME &&
+        if (BuildConfig.APPLICATION_ID.equals(Constants.USER_MICROG_PACKAGE_NAME) &&
                 prefs.getBoolean(FIRST_RUN_PREF, true)) {
             buildAlertDialog(this)
                     .setMessage(R.string.limited_services_dialog_information)
