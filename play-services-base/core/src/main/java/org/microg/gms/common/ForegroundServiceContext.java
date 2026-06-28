@@ -53,9 +53,10 @@ public class ForegroundServiceContext extends ContextWrapper {
                     } catch (Exception ignored) {
                     }
                 }
-                if (!annotation.resName().isEmpty() && !annotation.resPackage().isEmpty()) {
+                if (!annotation.resName().isEmpty()) {
+                    String resPackage = annotation.resPackage().isEmpty() ? service.getPackageName() : annotation.resPackage();
                     try {
-                        serviceName = service.getString(service.getResources().getIdentifier(annotation.resName(), "string", annotation.resPackage()));
+                        serviceName = service.getString(service.getResources().getIdentifier(annotation.resName(), "string", resPackage));
                     } catch (Exception ignored) {
                     }
                 }
