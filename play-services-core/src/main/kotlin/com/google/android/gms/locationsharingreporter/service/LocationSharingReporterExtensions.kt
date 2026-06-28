@@ -249,7 +249,7 @@ fun getLocationReportingStatus(context: Context) : Pair<Set<Int>, Map<String, Se
 fun refreshAndUploadLocation(context: Context, account: Account, location: Location) {
     Log.d(TAG, "Refreshing periodic location reporting state")
     val gmscoreVersion = try {
-        context.packageManager.getPackageInfo("com.google.android.gms", 0).versionName
+        context.packageManager.getPackageInfo(context.packageName, 0).versionName
     } catch (e: PackageManager.NameNotFoundException) {
         "Unknown"
     }

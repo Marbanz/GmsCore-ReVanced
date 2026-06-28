@@ -36,13 +36,13 @@ class MapContext(private val context: Context) : ContextWrapper(context) {
     }
 
     override fun getCacheDir(): File {
-        val cacheDir = File(appContext.cacheDir, "com.google.android.gms")
+        val cacheDir = File(appContext.cacheDir, appContext.packageName)
         cacheDir.mkdirs()
         return cacheDir
     }
 
     override fun getFilesDir(): File {
-        val filesDir = File(appContext.filesDir, "com.google.android.gms")
+        val filesDir = File(appContext.filesDir, appContext.packageName)
         filesDir.mkdirs()
         return filesDir
     }
@@ -71,7 +71,7 @@ class MapContext(private val context: Context) : ContextWrapper(context) {
     }
 
     override fun getSharedPreferences(name: String?, mode: Int): SharedPreferences {
-        return appContext.getSharedPreferences("com.google.android.gms_$name", mode)
+        return appContext.getSharedPreferences("${appContext.packageName}_$name", mode)
     }
 
     override fun getSystemService(name: String): Any? {
