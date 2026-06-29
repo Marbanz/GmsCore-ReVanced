@@ -56,6 +56,7 @@ import static com.google.android.gms.iid.InstanceID.ERROR_MISSING_INSTANCEID_SER
 import static com.google.android.gms.iid.InstanceID.ERROR_SERVICE_NOT_AVAILABLE;
 import static com.google.android.gms.iid.InstanceID.ERROR_TIMEOUT;
 import static org.microg.gms.common.Constants.GMS_PACKAGE_NAME;
+import static org.microg.gms.common.Constants.USER_MICROG_PACKAGE_NAME;
 import static org.microg.gms.common.Constants.GSF_PACKAGE_NAME;
 import static org.microg.gms.common.Constants.GMS_VERSION_CODE;
 import static org.microg.gms.gcm.GcmConstants.ACTION_C2DM_REGISTER;
@@ -111,6 +112,11 @@ public class InstanceIdRpc {
             if (packageManager.checkPermission(PERMISSION_RECEIVE, resolveInfo.serviceInfo.packageName) == PERMISSION_GRANTED) {
                 return iidPackageName = resolveInfo.serviceInfo.packageName;
             }
+        }
+        try {
+            ApplicationInfo appInfo = packageManager.getApplicationInfo(USER_MICROG_PACKAGE_NAME, 0);
+            return iidPackageName = appInfo.packageName;
+        } catch (PackageManager.NameNotFoundException ignored) {
         }
         try {
             ApplicationInfo appInfo = packageManager.getApplicationInfo(GMS_PACKAGE_NAME, 0);
