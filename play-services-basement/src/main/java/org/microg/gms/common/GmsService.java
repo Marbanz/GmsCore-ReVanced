@@ -69,7 +69,7 @@ public enum GmsService {
     AUDIO_MODEM(48, "com.google.android.gms.audiomodem.service.AudioModemService.START"),
     NEARBY(49, "com.google.android.gms.nearby.sharing.service.NearbySharingService.START"),
     LIGHTWEIGHT_NETWORK_QUALITY(50, "com.google.android.gms.herrevad.services.LightweightNetworkQualityAndroidService.START"),
-    PHENOTYPE(51, "com.google.android.gms.phenotype.service.START"),
+    PHENOTYPE(51, "app.revanced.android.gms.phenotype.service.START"),
     VOICE_UNLOCK(52, "com.google.android.gms.speech.service.START"),
 
     NEARBY_CONNECTIONS(54, "com.google.android.gms.nearby.connection.service.START"),
@@ -150,7 +150,7 @@ public enum GmsService {
     CRYPTAUTH_API(129, "com.google.android.gms.auth.cryptauth.cryptauthservice.START"),
     CHECKIN_API(130, "com.google.android.gms.checkin.START"),
     DYNAMIC_LINKS_API(131, "com.google.firebase.dynamiclinks.service.START"),
-    FONT_API(132, "com.google.android.gms.fonts.service.START"),
+    FONT_API(132, "app.revanced.android.gms.fonts.service.START"),
     TEST_SUPPORT(133),
     LOCATION_SHARING(134),
     ROMANESCO(135, "com.google.android.gms.romanesco.service.START"),
