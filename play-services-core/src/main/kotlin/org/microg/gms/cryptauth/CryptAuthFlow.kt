@@ -123,7 +123,9 @@ private suspend fun Context.registerForCryptAuth(checkinInfo: LastCheckinInfo, i
 
 private suspend fun Context.authenticateForCryptAuth(accountName: String): String? {
     val cryptAuthServiceOauth2 = AuthConstants.SCOPE_OAUTH2 + Scopes.CRYPTAUTH
-    val authManager = AuthManager(this, accountName, Constants.GMS_PACKAGE_NAME, cryptAuthServiceOauth2)
+    val authManager = AuthManager(this, accountName, packageName, cryptAuthServiceOauth2).apply {
+        isGmsApp = true
+    }
     return withContext(Dispatchers.IO) { authManager.requestAuth(false).auth }
 }
 

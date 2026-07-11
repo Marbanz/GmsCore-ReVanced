@@ -139,7 +139,7 @@ public abstract class WearableListenerService extends Service implements Capabil
                 // TODO: Verify Gms is calling
                 String[] packagesForUid = getPackageManager().getPackagesForUid(callingUid);
                 if (packagesForUid != null) {
-                    if (Arrays.asList(packagesForUid).contains(GMS_PACKAGE_NAME)) {
+                    if (Arrays.asList(packagesForUid).contains(GMS_PACKAGE_NAME) || Arrays.asList(packagesForUid).contains(getPackageName())) {
                         knownGoodUid = callingUid;
                     } else {
                         throw new SecurityException("Caller is not Services Core");

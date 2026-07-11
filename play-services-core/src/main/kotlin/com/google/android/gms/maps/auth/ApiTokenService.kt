@@ -66,7 +66,7 @@ class ApiTokenServiceImpl(private val context: Context, override val lifecycle: 
         Log.d(TAG, "Method requestApiToken is called. Thread:${Thread.currentThread().name} Params: $params")
         var callerPackageName = params?.getString(KEY_PACKAGE_NAME)
         val packagesForUid = context.applicationContext.packageManager.getPackagesForUid(getCallingUid())
-        if (callerPackageName == null || packagesForUid.isNullOrEmpty() || (!packagesForUid.contains(callerPackageName) && !packagesForUid.contains(Constants.GMS_PACKAGE_NAME))) {
+        if (callerPackageName == null || packagesForUid.isNullOrEmpty() || (!packagesForUid.contains(callerPackageName) && !packagesForUid.contains(Constants.GMS_PACKAGE_NAME) && !packagesForUid.contains(context.packageName))) {
             Log.d(TAG, "error: ${String.format(ApiError.ERROR_INVALID_PACKAGE.value, callerPackageName)}")
             return errorBundle(ApiError.ERROR_INVALID_PACKAGE.code)
         }

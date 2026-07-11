@@ -66,7 +66,7 @@ fun UserInterventionComponents(userActions: Map<Requirement, Boolean>) {
                 completed = action.component2()
             ) {
                 Intent(context, AskPushPermission::class.java).apply {
-                    putExtra(AskPushPermission.EXTRA_REQUESTED_PACKAGE, Constants.GMS_PACKAGE_NAME)
+                    putExtra(AskPushPermission.EXTRA_REQUESTED_PACKAGE, context.packageName)
                     putExtra(AskPushPermission.EXTRA_FORCE_ASK, true)
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)

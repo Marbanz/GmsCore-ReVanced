@@ -120,7 +120,8 @@ class GcmInGmsService : LifecycleService() {
 
     private suspend fun updateGroupsWithAccount(account: Account, regId: String) {
         Log.d(TAG, "updateGroupsWithAccount: account: ${account.name}")
-        val authManager = AuthManager(this, account.name, Constants.GMS_PACKAGE_NAME, GMS_GCM_OAUTH_SERVICE).apply {
+        val authManager = AuthManager(this, account.name, packageName, GMS_GCM_OAUTH_SERVICE).apply {
+            isGmsApp = true
             setItCaveatTypes("2")
         }
         val authsToken = runCatching { withContext(Dispatchers.IO) { authManager.requestAuth(true) }.parseAuthsToken() }.getOrNull() ?: return

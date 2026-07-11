@@ -22,7 +22,6 @@ import kotlinx.coroutines.withContext
 import org.microg.gms.auth.AuthManager
 import org.microg.gms.auth.folsom.SECURITY_WEB_BASE_URL
 import org.microg.gms.auth.folsom.buildKeyDeliveryInfo
-import org.microg.gms.common.Constants.GMS_PACKAGE_NAME
 import org.microg.gms.profile.Build.VERSION.SDK_INT
 import java.net.URLEncoder
 import java.util.Locale
@@ -90,7 +89,10 @@ class FolsomWebViewHelper(
 
     private fun getAuthenticatedUrl(targetUrl: String): String? = runCatching {
         val service = "weblogin:continue=" + URLEncoder.encode(targetUrl, "UTF-8")
-        AuthManager(fragment.requireContext(), accountName, GMS_PACKAGE_NAME, service)
+        val context = fragment.requireContext()
+        AuthManager(context, accountName, context.packageName, service).apply {
+            isGmsApp = true
+        }
             .requestAuthWithForegroundResolution(false)
             .auth
             ?.takeUnless { it.contains("WILL_NOT_SIGN_IN") }

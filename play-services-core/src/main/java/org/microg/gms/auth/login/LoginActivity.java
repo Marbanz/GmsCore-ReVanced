@@ -79,7 +79,6 @@ import static android.view.View.VISIBLE;
 import static android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT;
 import static org.microg.gms.accountsettings.ui.ExtensionsKt.EXTRA_URL;
 import static org.microg.gms.auth.AuthPrefs.isAuthVisible;
-import static org.microg.gms.common.Constants.GMS_PACKAGE_NAME;
 import static org.microg.gms.common.Constants.GMS_VERSION_CODE;
 import static org.microg.gms.common.Constants.VENDING_PACKAGE_NAME;
 import static org.microg.gms.gcm.ExtensionsKt.ACTION_GCM_REGISTER_ACCOUNT;
@@ -419,7 +418,8 @@ public class LoginActivity extends AssistantActivity {
         sendBroadcast(intent, PERMISSION_UPDATE_ACCOUNT);
     }
     private void retrieveGmsToken(final Account account) {
-        final AuthManager authManager = new AuthManager(this, account.name, GMS_PACKAGE_NAME, "ac2dm");
+        final AuthManager authManager = new AuthManager(this, account.name, getPackageName(), "ac2dm");
+        authManager.isGmsApp = true;
         authManager.setPermitted(true);
         new AuthRequest().fromContext(this)
                 .appIsGms()

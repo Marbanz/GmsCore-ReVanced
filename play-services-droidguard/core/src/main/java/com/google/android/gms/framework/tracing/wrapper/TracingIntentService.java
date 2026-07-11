@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.chimera.IntentService;
 
+import org.microg.gms.common.Constants;
 import org.microg.gms.utils.PackageManagerWrapper;
 import org.microg.gms.droidguard.core.VersionUtil;
 
@@ -39,7 +40,7 @@ public abstract class TracingIntentService extends IntentService {
             @Override
             public PackageInfo getPackageInfo(@NonNull String packageName, int flags) {
                 PackageInfo packageInfo = super.getPackageInfo(packageName, flags);
-                if ("com.google.android.gms".equals(packageName)) {
+                if ("com.google.android.gms".equals(packageName) || Constants.USER_MICROG_PACKAGE_NAME.equals(packageName)) {
                     VersionUtil versionUtil = new VersionUtil(TracingIntentService.this);
                     packageInfo.versionCode = versionUtil.getVersionCode();
                     packageInfo.versionName = versionUtil.getVersionString();

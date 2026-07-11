@@ -262,7 +262,9 @@ class GcmReceiverService : ReceiverService(TAG) {
         val deviceDataVersionInfo = LastCheckinInfo.read(this).deviceDataVersionInfo
         Log.d(TAG, "uploadProcessSitrep: deviceDataVersion=$deviceDataVersionInfo")
         val oauthToken = runBlocking {
-            val authManager = AuthManager(this@GcmReceiverService, account.name, Constants.GMS_PACKAGE_NAME, GMS_FMD_OAUTH_SERVICE)
+            val authManager = AuthManager(this@GcmReceiverService, account.name, packageName, GMS_FMD_OAUTH_SERVICE).apply {
+                isGmsApp = true
+            }
             runCatching { authManager.requestAuth(true).auth }.getOrNull()
         }
         if (oauthToken.isNullOrEmpty()) {

@@ -209,7 +209,7 @@ public class DataSource extends AbstractSafeParcelable {
         @NonNull
         public Builder setAppPackageName(@NonNull String packageName) {
             Application application = Application.GMS_APP;
-            this.application = Constants.GMS_PACKAGE_NAME.equals(packageName) ? Application.GMS_APP : new Application(packageName);
+            this.application = (Constants.GMS_PACKAGE_NAME.equals(packageName) || Constants.USER_MICROG_PACKAGE_NAME.equals(packageName)) ? Application.GMS_APP : new Application(packageName);
             return this;
         }
 

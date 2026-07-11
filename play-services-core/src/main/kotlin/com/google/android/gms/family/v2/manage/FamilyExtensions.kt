@@ -120,8 +120,11 @@ fun buildRequestContext(appId: String): RequestContext {
 suspend fun requestOauthToken(context: Context, accountName: String, service: String): String {
     val authResponse = withContext(Dispatchers.IO) {
         AuthManager(
-            context, accountName, Constants.GMS_PACKAGE_NAME, service
-        ).apply { isPermitted = true }.requestAuth(true)
+            context, accountName, context.packageName, service
+        ).apply {
+            isGmsApp = true
+            isPermitted = true
+        }.requestAuth(true)
     }
     return authResponse.auth ?: throw RuntimeException("oauthToken is null")
 }
@@ -233,6 +236,7 @@ private fun String.transformToInt() = when (this) {
     "ytr" -> 12
     "famlink" -> 13
     "com.google.android.gms" -> 14
+    Constants.USER_MICROG_PACKAGE_NAME -> 14
     "yt-main" -> 15
     "yt-fc" -> 17
     "yt-tandem" -> 18

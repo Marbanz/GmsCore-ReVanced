@@ -84,7 +84,7 @@ class WebViewHelper(private val activity: MainActivity, private val webView: Web
                 if (url.startsWith("intent:")) {
                     try {
                         val intent = Intent.parseUri(url, URI_INTENT_SCHEME)
-                        if (intent.`package` == GMS_PACKAGE_NAME || PackageUtils.isGooglePackage(activity, intent.`package`)) {
+                        if (intent.`package` == GMS_PACKAGE_NAME || intent.`package` == activity.packageName || PackageUtils.isGooglePackage(activity, intent.`package`)) {
                             // Only allow to start Google packages
                             activity.startActivity(intent)
                             return true
@@ -129,12 +129,17 @@ class WebViewHelper(private val activity: MainActivity, private val webView: Web
                         val intent = Intent(Intent.ACTION_VIEW, overrideUri).apply { addCategory(Intent.CATEGORY_BROWSABLE) }
                         if (callingPackage?.let { PackageUtils.isGooglePackage(activity, it) } == true) {
                             try {
-                                intent.`package` = GMS_PACKAGE_NAME
+                                intent.`package` = activity.packageName
                                 activity.startActivity(intent)
                             } catch (e: Exception) {
-                                Log.w(TAG, "Error forwarding to GMS ", e)
-                                intent.`package` = null
-                                activity.startActivity(intent)
+                                try {
+                                    intent.`package` = GMS_PACKAGE_NAME
+                                    activity.startActivity(intent)
+                                } catch (e: Exception) {
+                                    Log.w(TAG, "Error forwarding to GMS ", e)
+                                    intent.`package` = null
+                                    activity.startActivity(intent)
+                                }
                             }
                         } else activity.startActivity(intent)
                     } catch (e: Exception) {
@@ -186,7 +191,9 @@ class WebViewHelper(private val activity: MainActivity, private val webView: Web
     private fun openWebWithAccount(accountName: String, url: String?) {
         try {
             val service = "weblogin:continue=" + URLEncoder.encode(url, "utf-8")
-            val authManager = AuthManager(activity, accountName, GMS_PACKAGE_NAME, service)
+            val authManager = AuthManager(activity, accountName, activity.packageName, service).apply {
+                isGmsApp = true
+            }
             val authUrl = authManager.requestAuthWithForegroundResolution(false)?.auth
             if (authUrl?.contains("WILL_NOT_SIGN_IN") == true) {
                 throw RuntimeException("Would not sign in")

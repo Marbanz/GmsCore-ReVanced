@@ -49,7 +49,7 @@ public class GamesStubService extends BaseService {
         if (request.extras != null) {
             packageName = request.extras.getString(PARAM_GAME_PACKAGE_NAME);
         }
-        if (packageName == null) packageName = GMS_PACKAGE_NAME;
+        if (packageName == null) packageName = getPackageName();
         Intent intent = new Intent(ACTION_PLAY_GAMES_UPGRADE);
         intent.setPackage(BuildConfig.APPLICATION_ID);
         intent.putExtra(EXTRA_GAME_PACACKE_NAME, packageName);

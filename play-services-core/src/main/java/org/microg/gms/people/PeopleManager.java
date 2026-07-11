@@ -30,7 +30,6 @@ import com.google.android.gms.common.Scopes;
 import org.json.JSONObject;
 import org.microg.gms.auth.AuthManager;
 import org.microg.gms.auth.AuthResponse;
-import org.microg.gms.common.Constants;
 import org.microg.gms.common.Utils;
 
 import java.io.File;
@@ -155,7 +154,8 @@ public class PeopleManager {
     }
 
     public static String getUserInfoAuthKey(Context context, Account account) {
-        AuthManager authManager = new AuthManager(context, account.name, Constants.GMS_PACKAGE_NAME, USERINFO_SCOPE);
+        AuthManager authManager = new AuthManager(context, account.name, context.getPackageName(), USERINFO_SCOPE);
+        authManager.isGmsApp = true;
         authManager.setPermitted(true);
         String result = authManager.getAuthToken();
         if (result == null) {

@@ -26,7 +26,7 @@ import org.microg.gms.common.PackageUtils
 import org.microg.gms.utils.warnOnTransactionIssues
 
 private const val TAG = "PlayGamesService"
-private val FIRST_PARTY_PACKAGES = setOf(Constants.GMS_PACKAGE_NAME, GAMES_PACKAGE_NAME)
+private val FIRST_PARTY_PACKAGES = setOf(Constants.GMS_PACKAGE_NAME, Constants.USER_MICROG_PACKAGE_NAME, GAMES_PACKAGE_NAME)
 
 class FirstPartyGamesService : BaseService(TAG, GmsService.GAMES) {
     override fun handleServiceRequest(callback: IGmsCallbacks, request: GetServiceRequest, service: GmsService) {
