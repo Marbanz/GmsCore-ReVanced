@@ -11,7 +11,7 @@ import android.content.SharedPreferences
 class PoTokenStore(context: Context) {
 
     private val sp: SharedPreferences =
-        context.getSharedPreferences("com.google.android.gms.potokens", Context.MODE_PRIVATE)
+        context.getSharedPreferences("app.revanced.android.gms.potokens", Context.MODE_PRIVATE)
 
     fun getString(key: String, defValue: String?): String? {
         return sp.getString(key, defValue)

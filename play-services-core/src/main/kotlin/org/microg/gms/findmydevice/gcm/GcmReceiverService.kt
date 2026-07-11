@@ -248,7 +248,7 @@ class GcmReceiverService : ReceiverService(TAG) {
     }
 
     fun uploadProcessSitrep(account: Account) {
-        val regId = getSharedPreferences("com.google.android.gcm", MODE_PRIVATE)?.getString(KEY_GCM_REG_ID, null)
+        val regId = getSharedPreferences("app.revanced.android.gcm", MODE_PRIVATE)?.getString(KEY_GCM_REG_ID, null)
         if (regId == null) {
             Log.d(TAG, "uploadProcessSitrep: regId is null!")
             return

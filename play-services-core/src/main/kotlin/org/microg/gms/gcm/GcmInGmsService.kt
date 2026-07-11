@@ -56,7 +56,7 @@ class GcmInGmsService : LifecycleService() {
     override fun onCreate() {
         super.onCreate()
         ProfileManager.ensureInitialized(this)
-        sp = getSharedPreferences("com.google.android.gcm", MODE_PRIVATE) ?: throw RuntimeException("sp get error")
+        sp = getSharedPreferences("app.revanced.android.gcm", MODE_PRIVATE) ?: throw RuntimeException("sp get error")
         accountManager = getSystemService(ACCOUNT_SERVICE) as AccountManager? ?: throw RuntimeException("accountManager is null")
     }
 

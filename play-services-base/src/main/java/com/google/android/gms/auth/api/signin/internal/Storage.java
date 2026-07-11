@@ -36,7 +36,7 @@ public class Storage {
     private final SharedPreferences sharedPreferences;
 
     private Storage(Context context) {
-        this.sharedPreferences = context.getSharedPreferences("com.google.android.gms.signin", Context.MODE_PRIVATE);
+        this.sharedPreferences = context.getSharedPreferences("app.revanced.android.gms.signin", Context.MODE_PRIVATE);
     }
 
     @Nullable
