@@ -217,7 +217,7 @@ class SmsRetrieverCore(private val context: Context, override val lifecycle: Lif
         intent.setPackage(request.packageName)
         intent.putExtras(extras)
         intent.putExtra(SmsRetriever.EXTRA_STATUS, status)
-        context.sendBroadcast(intent)
+        context.sendBroadcast(intent, SmsRetriever.SEND_PERMISSION)
 
         if (finish) finishRequest(request)
     }
