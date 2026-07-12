@@ -43,6 +43,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.microg.gms.common.Constants.GMS_PACKAGE_NAME;
+import static org.microg.gms.common.Constants.USER_MICROG_PACKAGE_NAME;
 
 @PublicApi
 public abstract class WearableListenerService extends Service implements CapabilityApi.CapabilityListener, ChannelApi.ChannelListener, DataApi.DataListener, MessageApi.MessageListener, NodeApi.NodeListener {
@@ -139,7 +140,7 @@ public abstract class WearableListenerService extends Service implements Capabil
                 // TODO: Verify Gms is calling
                 String[] packagesForUid = getPackageManager().getPackagesForUid(callingUid);
                 if (packagesForUid != null) {
-                    if (Arrays.asList(packagesForUid).contains(GMS_PACKAGE_NAME) || Arrays.asList(packagesForUid).contains(getPackageName())) {
+                    if (Arrays.asList(packagesForUid).contains(GMS_PACKAGE_NAME) || Arrays.asList(packagesForUid).contains(USER_MICROG_PACKAGE_NAME)) {
                         knownGoodUid = callingUid;
                     } else {
                         throw new SecurityException("Caller is not Services Core");
