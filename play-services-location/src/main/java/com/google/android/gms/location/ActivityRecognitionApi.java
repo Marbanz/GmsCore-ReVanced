@@ -34,7 +34,7 @@ public interface ActivityRecognitionApi {
     /**
      * Removes all activity updates for the specified PendingIntent.
      * <p>
-     * Calling this function requires the com.google.android.gms.permission.ACTIVITY_RECOGNITION
+     * Calling this function requires the app.revanced.android.gms.permission.ACTIVITY_RECOGNITION
      * permission.
      *
      * @param client         An existing GoogleApiClient. It must be connected at the time of this
@@ -90,7 +90,7 @@ public interface ActivityRecognitionApi {
      * that have the same PendingIntent (as defined by {@link Object#equals(Object)}) will be
      * replaced by this request.
      * <p>
-     * Calling this function requires the com.google.android.gms.permission.ACTIVITY_RECOGNITION
+     * Calling this function requires the app.revanced.android.gms.permission.ACTIVITY_RECOGNITION
      * permission.
      *
      * @param client                  An existing GoogleApiClient. It must be connected at the time

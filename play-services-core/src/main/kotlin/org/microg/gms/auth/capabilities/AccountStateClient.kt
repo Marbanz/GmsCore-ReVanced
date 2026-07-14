@@ -45,9 +45,7 @@ class AccountStateClient(private val context: Context) {
         val token = fetchAccessToken(account)
             ?: throw IOException("couldn't fetch accessToken for AANG scope")
 
-        val certSha1 = PackageUtils.firstSignatureDigest(context, Constants.GMS_PACKAGE_NAME)
-            ?.lowercase()
-            ?: throw IOException("no signature for ${Constants.GMS_PACKAGE_NAME}")
+        val certSha1 = Constants.GMS_PACKAGE_SIGNATURE_SHA1.lowercase()
 
         val request = AccountStateRequest(
             requestHeader = AccountStateRequestHeader(

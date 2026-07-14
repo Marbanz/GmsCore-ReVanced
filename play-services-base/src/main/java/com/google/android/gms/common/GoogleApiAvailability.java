@@ -50,7 +50,7 @@ public class GoogleApiAvailability {
     /**
      * Package name for Google Play services.
      */
-    public static final String GOOGLE_PLAY_SERVICES_PACKAGE = Constants.GMS_PACKAGE_NAME;
+    public static final String GOOGLE_PLAY_SERVICES_PACKAGE = Constants.USER_MICROG_PACKAGE_NAME;
 
     /**
      * Google Play services client library version (declared in library's AndroidManifest.xml android:versionCode).

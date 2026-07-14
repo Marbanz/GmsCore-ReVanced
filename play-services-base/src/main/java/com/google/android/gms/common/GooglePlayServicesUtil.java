@@ -46,7 +46,7 @@ public class GooglePlayServicesUtil {
      * Package name for Google Play services.
      */
     @Deprecated
-    public static final String GOOGLE_PLAY_SERVICES_PACKAGE = Constants.GMS_PACKAGE_NAME;
+    public static final String GOOGLE_PLAY_SERVICES_PACKAGE = Constants.USER_MICROG_PACKAGE_NAME;
 
     /**
      * Google Play services client library version (declared in library's AndroidManifest.xml android:versionCode).
@@ -137,7 +137,7 @@ public class GooglePlayServicesUtil {
      */
     public static Context getRemoteContext(Context context) {
         try {
-            return context.createPackageContext(Constants.GMS_PACKAGE_NAME, Context.CONTEXT_INCLUDE_CODE | Context.CONTEXT_IGNORE_SECURITY);
+            return context.createPackageContext(context.getPackageName(), Context.CONTEXT_INCLUDE_CODE | Context.CONTEXT_IGNORE_SECURITY);
         } catch (PackageManager.NameNotFoundException unused) {
             return null;
         }
@@ -150,7 +150,7 @@ public class GooglePlayServicesUtil {
      */
     public static Resources getRemoteResources(Context context) {
         try {
-            return context.getPackageManager().getResourcesForApplication(Constants.GMS_PACKAGE_NAME);
+            return context.getPackageManager().getResourcesForApplication(context.getPackageName());
         } catch (PackageManager.NameNotFoundException unused) {
             return null;
         }

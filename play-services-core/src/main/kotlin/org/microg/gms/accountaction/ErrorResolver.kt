@@ -105,7 +105,7 @@ fun Context.isGcmEnabled(): Boolean = GcmPrefs.get(this).isEnabled
 fun Context.isMicrogAppGcmAllowed(): Boolean {
     val gcmPrefs = GcmPrefs.get(this)
     val gcmDatabaseEntry = GcmDatabase(this).use {
-        it.getApp(Constants.GMS_PACKAGE_NAME)
+        it.getApp(packageName)
     }
     return !(gcmDatabaseEntry != null &&
             !gcmDatabaseEntry.allowRegister ||

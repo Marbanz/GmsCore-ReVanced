@@ -197,7 +197,7 @@ class MainActivity : AppCompatActivity() {
             .map { it.substring(EXTRA_SCREEN_OPTIONS_PREFIX.length) to intent.getStringExtra(it) }
             .toMap()
 
-        val callingPackage = intent?.getStringExtra(EXTRA_CALLING_PACKAGE_NAME) ?: callingActivity?.packageName ?: Constants.GMS_PACKAGE_NAME
+        val callingPackage = intent?.getStringExtra(EXTRA_CALLING_PACKAGE_NAME) ?: callingActivity?.packageName ?: packageName
 
         val ignoreAccount = intent?.getBooleanExtra(EXTRA_IGNORE_ACCOUNT, false) ?: false
         val accountName = if (ignoreAccount) null else {
@@ -334,7 +334,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "updateVerifyNotification: notificationId: $notificationId")
         if (notificationId == -1) return
         Intent(ACTION_GCM_NOTIFY_COMPLETE).apply {
-            setPackage(GMS_PACKAGE_NAME)
+            setPackage(packageName)
             putExtra(EXTRA_NOTIFICATION_ACCOUNT, accountName)
         }.let { sendBroadcast(it) }
     }

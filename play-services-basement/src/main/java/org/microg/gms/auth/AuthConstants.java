@@ -23,8 +23,8 @@ public class AuthConstants {
     public static final String PROVIDER_METHOD_CLEAR_PASSWORD = "clear_password";
     public static final String PROVIDER_EXTRA_CLEAR_PASSWORD = "clear_password";
     public static final String PROVIDER_EXTRA_ACCOUNTS = "accounts";
-    public static final String DEFAULT_ACCOUNT_TYPE = "com.google";
-    public static final String WORK_ACCOUNT_TYPE = "com.google.work";
+    public static final String DEFAULT_ACCOUNT_TYPE = "app.revanced";
+    public static final String WORK_ACCOUNT_TYPE = "app.revanced.work";
 
     public static final String KEY_ACCOUNT_SERVICES = "services";
     public static final String KEY_ACCOUNT_CAPABILITIES = "capabilities";

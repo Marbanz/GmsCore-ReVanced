@@ -49,7 +49,7 @@ public class DynamiteContextFactory {
         }
         try {
             DynamiteModuleInfo moduleInfo = new DynamiteModuleInfo(moduleId);
-            Context gmsContext = originalContext.createPackageContext(Constants.GMS_PACKAGE_NAME, 0);
+            Context gmsContext = originalContext.createPackageContext(Constants.USER_MICROG_PACKAGE_NAME, 0);
             Context originalAppContext = originalContext.getApplicationContext();
 
             DynamiteContext dynamiteContext;

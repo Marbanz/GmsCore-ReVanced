@@ -176,15 +176,17 @@ android {
         }
         "huawei" {
             dimension 'target'
+            applicationId = "app.revanced.android.gms"
             versionNameSuffix "-hw"
+            resValue "string", "package_id", "app.revanced.android.gms"
         }
         "user" {
             dimension 'target'
-            applicationId = "org.microg.gms"
+            applicationId = "app.revanced.android.gms"
             versionNameSuffix "-user"
             manifestPlaceholders = [appLabel:"@string/limited_services_app_name"]
             matchingFallbacks = ['default']
-            resValue "string", "package_id", "org.microg.gms"
+            resValue "string", "package_id", "app.revanced.android.gms"
         }
         "hms" {
             dimension 'maps'

@@ -113,6 +113,10 @@ public class MultiConnectionKeeper {
     }
 
     private String getTargetPackageWithoutPref() {
+        // Must be self, as we want to bind to our own services, and not to GMS or microG ones,
+        // in case system GMS is installed alongside.
+        if (true) return context.getPackageName();
+
         // Pref: gms > microG > self
         PackageManager pm = context.getPackageManager();
         try {

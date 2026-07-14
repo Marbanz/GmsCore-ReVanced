@@ -6,6 +6,6 @@
 <account-authenticator xmlns:android="http://schemas.android.com/apk/res/android"
     android:label="@string/auth_work_authenticator_label"
     android:icon="@drawable/ic_briefcase"
-    android:accountType="com.google.work"
+    android:accountType="app.revanced.work"
     android:smallIcon="@drawable/ic_briefcase"
     android:customTokens="true"/>

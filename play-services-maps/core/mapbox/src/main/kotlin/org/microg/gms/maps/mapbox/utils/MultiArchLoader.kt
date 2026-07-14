@@ -42,7 +42,7 @@ class MultiArchLoader(private val mapContext: Context, private val appContext: C
                 val cacheFileStamp = File("${appContext.cacheDir.absolutePath}/.gmscore/$path.stamp")
                 val cacheVersion = kotlin.runCatching { cacheFileStamp.readText() }.getOrNull()
                 // TODO: Use better version indicator
-                val mapVersion = PackageUtils.versionName(mapContext, Constants.GMS_PACKAGE_NAME)
+                val mapVersion = PackageUtils.versionName(mapContext, mapContext.packageName)
                 val apkFile = File(mapContext.packageCodePath)
                 if (!cacheFile.exists() || cacheVersion == null || cacheVersion != mapVersion) {
                     val zipFile = ZipFile(apkFile)

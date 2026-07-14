@@ -160,7 +160,7 @@ class GcmReceiverService : ReceiverService(TAG) {
         val content = notificationData.content ?: return
         val intentExtras = notificationData.intentActions?.primaryPayload?.extras ?: return
         val intent = Intent(this, MainActivity::class.java).apply {
-            `package` = Constants.GMS_PACKAGE_NAME
+            `package` = packageName
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_MULTIPLE_TASK
             intentExtras.forEach { putExtra(it.key, it.value_) }
             putExtra(KEY_NOTIFICATION_ID, notificationId)

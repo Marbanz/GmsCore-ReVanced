@@ -41,6 +41,7 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static com.google.android.gms.gcm.GoogleCloudMessaging.ERROR_SERVICE_NOT_AVAILABLE;
 import static org.microg.gms.common.Constants.GMS_PACKAGE_NAME;
 import static org.microg.gms.common.Constants.GSF_PACKAGE_NAME;
+import static org.microg.gms.common.Constants.USER_MICROG_PACKAGE_NAME;
 import static org.microg.gms.gcm.GcmConstants.ACTION_C2DM_REGISTER;
 import static org.microg.gms.gcm.GcmConstants.ACTION_C2DM_REGISTRATION;
 import static org.microg.gms.gcm.GcmConstants.ACTION_GCM_SEND;
@@ -93,7 +94,7 @@ public class CloudMessagingRpc {
             }
         }
         try {
-            ApplicationInfo appInfo = packageManager.getApplicationInfo(GMS_PACKAGE_NAME, 0);
+            ApplicationInfo appInfo = packageManager.getApplicationInfo(USER_MICROG_PACKAGE_NAME, 0);
             return gcmPackageName = appInfo.packageName;
         } catch (PackageManager.NameNotFoundException ignored) {
         }
@@ -148,7 +149,7 @@ public class CloudMessagingRpc {
 
     public void sendGcmMessage(Bundle extras) {
         Intent intent = new Intent(ACTION_GCM_SEND);
-        intent.setPackage(GMS_PACKAGE_NAME);
+        intent.setPackage(USER_MICROG_PACKAGE_NAME);
         intent.putExtras(extras);
         intent.putExtra(EXTRA_APP, getSelfAuthIntent());
         context.sendOrderedBroadcast(intent, PERMISSION_GTALK);

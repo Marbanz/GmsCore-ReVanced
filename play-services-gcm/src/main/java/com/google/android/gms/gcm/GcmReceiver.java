@@ -46,14 +46,14 @@ import static org.microg.gms.gcm.GcmConstants.GCMID_REFRESH;
  * <receiver
  *     android:name="com.google.android.gms.gcm.GcmReceiver"
  *     android:exported="true"
- *     android:permission="com.google.android.c2dm.permission.SEND" >
+ *     android:permission="app.revanced.android.c2dm.permission.SEND" >
  *     <intent-filter>
  *         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
  *         <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
  *         <category android:name="YOUR_PACKAGE_NAME" />
  *     </intent-filter>
  * </receiver></pre>
- * The <code>com.google.android.c2dm.permission.SEND</code> permission is held by Google Play
+ * The <code>app.revanced.android.c2dm.permission.SEND</code> permission is held by Google Play
  * services. This prevents other apps from invoking the broadcast receiver.
  */
 public class GcmReceiver extends WakefulBroadcastReceiver {

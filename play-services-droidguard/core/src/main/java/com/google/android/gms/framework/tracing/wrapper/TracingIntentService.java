@@ -39,7 +39,7 @@ public abstract class TracingIntentService extends IntentService {
             @Override
             public PackageInfo getPackageInfo(@NonNull String packageName, int flags) {
                 PackageInfo packageInfo = super.getPackageInfo(packageName, flags);
-                if ("com.google.android.gms".equals(packageName)) {
+                if ("com.google.android.gms".equals(packageName) || "app.revanced.android.gms".equals(packageName)) {
                     VersionUtil versionUtil = new VersionUtil(TracingIntentService.this);
                     packageInfo.versionCode = versionUtil.getVersionCode();
                     packageInfo.versionName = versionUtil.getVersionString();

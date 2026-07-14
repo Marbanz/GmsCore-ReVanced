@@ -37,7 +37,7 @@ buildscript {
 
     ext.androidBuildGradleVersion = '8.13.2'
 
-    ext.androidBuildVersionTools = '35.0.0'
+    ext.androidBuildVersionTools = '35.0.1'
 
     ext.androidMinSdk = 19
     ext.androidTargetSdk = 29

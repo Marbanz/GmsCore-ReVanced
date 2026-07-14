@@ -168,7 +168,7 @@ class AuthorizationServiceImpl(val context: Context, val packageName: String, ov
             defaultAccountName?.let { setAccountName(it) }
         }.build()
         val intent = Intent(context, AuthSignInActivity::class.java).apply {
-            `package` = Constants.GMS_PACKAGE_NAME
+            `package` = context.packageName
             putExtra("config", SignInConfiguration(packageName, options))
         }
         val pendingIntent = PendingIntent.getActivity(

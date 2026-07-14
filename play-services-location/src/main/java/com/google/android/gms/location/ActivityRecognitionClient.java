@@ -28,7 +28,7 @@ public interface ActivityRecognitionClient extends HasApiKey<Api.ApiOptions.NoOp
      * To call this function, a different permission is required depending on your Android API level:
      * <ul>
      *     <li>For Android 10 (API level 29) and later: {@code android.permission.ACTIVITY_RECOGNITION} permission</li>
-     *     <li>For Android 9 (API level 28) and earlier: {@code com.google.android.gms.permission.ACTIVITY_RECOGNITION} permission</li>
+     *     <li>For Android 9 (API level 28) and earlier: {@code app.revanced.android.gms.permission.ACTIVITY_RECOGNITION} permission</li>
      * </ul>
      *
      * @param pendingIntent the associated {@link PendingIntent} of the activity transition request which is to be removed
@@ -43,7 +43,7 @@ public interface ActivityRecognitionClient extends HasApiKey<Api.ApiOptions.NoOp
      * To call this function, a different permission is required depending on your Android API level:
      * <ul>
      *     <li>For Android 10 (API level 29) and later: {@code android.permission.ACTIVITY_RECOGNITION} permission</li>
-     *     <li>For Android 9 (API level 28) and earlier: {@code com.google.android.gms.permission.ACTIVITY_RECOGNITION} permission</li>
+     *     <li>For Android 9 (API level 28) and earlier: {@code app.revanced.android.gms.permission.ACTIVITY_RECOGNITION} permission</li>
      * </ul>
      *
      * @param callbackIntent the PendingIntent that was used in {@link #requestActivityUpdates(long, PendingIntent)} or
