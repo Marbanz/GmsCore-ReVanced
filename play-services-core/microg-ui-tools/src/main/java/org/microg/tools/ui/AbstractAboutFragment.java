@@ -66,9 +66,9 @@ public abstract class AbstractAboutFragment extends Fragment {
 
     public static String getLibVersion(String packageName) {
         try {
-            String versionName = (String) Class.forName(packageName + ".BuildConfig").getField("VERSION_NAME").get(null);
+            String versionName = (String) Class.forName(packageName.replace("app.revanced", "com.google") + ".BuildConfig").getField("VERSION_NAME").get(null);
             if (TextUtils.isEmpty(versionName)) return "";
-            return versionName.trim();
+            return versionName.trim() + " (ReVanced)";
         } catch (Exception e) {
             return "";
         }
