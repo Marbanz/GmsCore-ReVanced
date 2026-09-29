@@ -73,6 +73,10 @@ public class AuthManager {
         return accountType;
     }
 
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
     public AccountManager getAccountManager() {
         if (accountManager == null)
             accountManager = AccountManager.get(context);
@@ -228,7 +232,7 @@ public class AuthManager {
 
     @SuppressLint("MissingPermission")
     public void invalidateAuthToken(String auth) {
-        getAccountManager().invalidateAuthToken(accountType, auth);
+        getAccountManager().invalidateAuthToken(getAccountType(), auth);
     }
 
     public void storeResponse(AuthResponse response) {
